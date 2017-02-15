@@ -7,5 +7,10 @@
   <body>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
+    <form action="/torrent" method="post">
+    	<input type="text" id="torrent" name="torrent">
+    	<label for="torrent">Insert Magnet link</label>
+    	<input type="submit" value="download">
+    </form>
   </body>
 </html>
