@@ -13,7 +13,8 @@
     "express": "~4.14.1",
     "morgan": "~1.7.0",
     "node-torrent": "^0.2.1",
-    "serve-favicon": "~2.3.2"
+    "serve-favicon": "~2.3.2",
+    "webtorrent": "^0.98.8"
   },
   "main": "app.js",
   "devDependencies": {},
