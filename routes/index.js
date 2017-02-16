@@ -26,6 +26,7 @@ router.get('/', function(req, res, next) {
 
 router.post('/torrent', (req, res, next) => {
 	let magnetURI = req.body.torrent;
+	console.log('here we go');
 	client.add(magnetURI, { path: '/public/files' }, function (torrent) {
 	  torrent.on('done', function () {
 		console.log('torrent download finished')
