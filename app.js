@@ -4,7 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
+var https = require('https');
 var index = require('./routes/index');
 var users = require('./routes/users');
 
@@ -43,7 +43,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.listen(3000, function(){
+app.listen(80, function(){
 	console.log('chatuba');
 });
 
