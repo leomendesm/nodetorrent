@@ -1,7 +1,10 @@
+"use strict";
 var express = require('express');
 var router = express.Router();
-var Client = require('node-torrent');
-var client = new Client({logLevel: 'DEBUG'});
+//var Client = require('node-torrent');
+//var client = new Client({logLevel: 'DEBUG'});
+var WebTorrent = require('webtorrent')
+var client = new WebTorrent()
 
 var fs = require('fs');
 var domain = require('domain').create();
@@ -22,8 +25,13 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/torrent', (req, res, next) => {
-	let magnet = req.body.torrent;
-	var torrent = client.addTorrent(magnet);
+	let magnetURI = req.body.torrent;
+	client.add(magnetURI, { path: '/public/files' }, function (torrent) {
+	  torrent.on('done', function () {
+		console.log('torrent download finished')
+	  })
+	})
+	/*var torrent = client.addTorrent(magnet);
 	console.log(torrent);
 	res.send(200);
 	next();
@@ -34,6 +42,8 @@ router.post('/torrent', (req, res, next) => {
         file.path = newPath;
         res.json('download', { name: file.path });
     });
+	*/
+
 });
 
 })
