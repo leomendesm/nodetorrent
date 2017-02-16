@@ -22,9 +22,10 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/torrent', (req, res, next) => {
-
-var magnet = req.body.torrent;
-
+console.log('vamo')
+console.log(req.body);
+let magnet = req.body.torrent;
+console.log(magnet);
 var torrent = client.addTorrent(magnet);
 
 // when the torrent completes, move it's files to another area

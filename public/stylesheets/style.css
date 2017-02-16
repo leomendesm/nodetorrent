@@ -1,8 +1,13 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+
 }
 
 a {
   color: #00B7FF;
+}
+.while{
+	margin-top: 20px;
+	font-size: 15px;
+	font-weight: 100;
 }
