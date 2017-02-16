@@ -22,22 +22,18 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/torrent', (req, res, next) => {
-console.log('vamo')
-console.log(req.body);
-let magnet = req.body.torrent;
-console.log(magnet);
-var torrent = client.addTorrent(magnet);
-
-// when the torrent completes, move it's files to another area
-torrent.on('complete', function() {
-    console.log('complete!');
+	let magnet = req.body.torrent;
+	var torrent = client.addTorrent(magnet);
+	// when the torrent completes, move it's files to another area
+	torrent.on('complete', function() {
+		res.send(200);
     torrent.files.forEach(function(file) {
         var newPath = '/public/files/' + file.path;
         fs.rename(file.path, newPath);
         // while still seeding need to make sure file.path points to the right place
 
         file.path = newPath;
-        res.render('download', { name: file.path })
+        res.json('download', { name: file.path })
 
     });
 
