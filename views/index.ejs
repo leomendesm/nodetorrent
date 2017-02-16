@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title>Torrent Downloader</title>
       <!-- Compiled and minified CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
     <link rel='stylesheet' href='/stylesheets/style.css' />
-
   </head>
   <body>
 	<center>
@@ -38,21 +37,22 @@
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
   	<script src="/socket.io/socket.io.js"></script>
 	<script>
-	  var socket = io();
 	$(document).ready(function(){
+		localStorage.setItem("rand",'<%= rand %>' );
+		var socket = io();
 		$('#loading').hide();
 		$('#send_torrent').click(() => {
-			$('#loading').show();
 			let input = $('#torrent').val();
-			$.ajax({
-				url: '/torrent',
-				method : 'post',
-				data: 'torrent=' + input,
-				success: function (res) {
-					$('#loading').hide();
-					console.log(res);
-				}
-			})
+			socket.emit('toServer', { magnet: input, id: localStorage.getItem('rand')});
+		})
+		socket.on(localStorage.getItem('rand'),(data)=>{
+			console.log(data);
+			if(data.status === 1){
+				$('#loading').show();
+			}else{
+				$('#loading').hide();
+
+			}
 		})
 	})
 	</script>
