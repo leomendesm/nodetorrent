@@ -4,9 +4,10 @@ let	path = require('path'),
 	cookieParser = require('cookie-parser'),
 	bodyParser = require('body-parser'),
 	index = require('./routes/index'),
-	app = require('express').createServer(),
-	server = require('http').createServer(app),
-	io = require('socket.io').listen(server);
+	express = require('express'),
+ 	app = express(),
+ 	server = require('http').Server(app),
+ 	io = require('socket.io')(server);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
