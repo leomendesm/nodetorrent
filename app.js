@@ -8,7 +8,7 @@ var index = require('./routes/index');
 
 var app = express();
 var https = require('https').Server(app);
-var io = require('socket.io')(http);
+var io = require('socket.io')(https);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
