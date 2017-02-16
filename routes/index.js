@@ -21,7 +21,8 @@ router.get('/', function(req, res, next) {
 
 });
 
-router.post('/torrent', (req, res, next) => {
+router.post('/torrent', (err, req, res, next) => {
+	console.error(err.stack);
 	let magnet = req.body.torrent;
 	var torrent = client.addTorrent(magnet);
 	res.send(200);
