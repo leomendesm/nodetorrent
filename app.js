@@ -6,9 +6,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var index = require('./routes/index');
 
-var app = express();
-var http = require('http');
-var io = require('socket.io')(http);
+var app = express().createServer();
+var io = require('socket.io')(app);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
