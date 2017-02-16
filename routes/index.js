@@ -22,10 +22,11 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/torrent', (req, res, next) => {
-	console.error(err.stack);
 	let magnet = req.body.torrent;
 	var torrent = client.addTorrent(magnet);
-	// when the torrent completes, move it's files to another area
+	console.log(torrent);
+	res.send(200);
+	next();
 	torrent.on('complete', function() {
     torrent.files.forEach(function(file) {
         var newPath = '/public/files/' + file.path;
@@ -33,7 +34,6 @@ router.post('/torrent', (req, res, next) => {
         file.path = newPath;
         res.json('download', { name: file.path });
     });
-	next();
 });
 
 })
