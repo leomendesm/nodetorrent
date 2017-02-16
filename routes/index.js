@@ -24,9 +24,10 @@ router.get('/', function(req, res, next) {
 router.post('/torrent', (req, res, next) => {
 	let magnet = req.body.torrent;
 	var torrent = client.addTorrent(magnet);
+	res.send(200);
 	// when the torrent completes, move it's files to another area
 	torrent.on('complete', function() {
-		res.send(200);
+
     torrent.files.forEach(function(file) {
         var newPath = '/public/files/' + file.path;
         fs.rename(file.path, newPath);
