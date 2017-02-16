@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 
 var app = express();
-var https = require('https');
+var http = require('http');
 var io = require('socket.io')(http);
 
 // view engine setup
