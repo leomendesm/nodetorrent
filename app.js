@@ -5,7 +5,6 @@ let	path = require('path'),
 	bodyParser = require('body-parser'),
 	index = require('./routes/index'),
 	app = require('express').createServer(),
-	io = require('socket.io')(app),
 	server = require('http').createServer(app),
 	io = require('socket.io').listen(server);
 
