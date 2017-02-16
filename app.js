@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 
 var app = express();
-var http = require('http');
+var https = require('https').Server(app);
 var io = require('socket.io')(http);
 
 // view engine setup
@@ -46,7 +46,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-http.listen(80, function(){
+https.listen(80, function(){
 	console.log('chatuba');
 });
 
