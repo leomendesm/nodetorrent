@@ -12,13 +12,13 @@
    		<img src="images/logo.png" class="responsive-img" alt="">
    	</center>
    	<div class="row">
-    	<form id="torrent_form" class="col s12">
+    	<form id="torrent_form" class="col l12">
       		<div class="row">
-        		<div class="input-field col s4 offset-s4">
+        		<div class="input-field col l4 offset-l4">
         			<input type="text" id="torrent" name="torrent" class="validate">
         			<label for="torrent">Drop Magnet Link</label>
         		</div>
-        		<div class="input-field col s4 offset-s4">
+        		<div class="input-field col l4 offset-l4">
         			<a id="send_torrent" class="waves-effect waves-light btn right">Download</a>
         		</div>
 			</div>
@@ -26,7 +26,7 @@
 	<center id="loading">
    		<p class="grey-text text-darken-1 flow-text">This may take a while<br>It’s a good time to grab a cup of coffee or tea.</p>
    		<div class="row">
-   			<div class="col s4 offset-s4">
+   			<div class="col l4 offset-l4">
    				<div class="progress">
 					<div class="indeterminate"></div>
 				</div>
@@ -36,7 +36,9 @@
 	</div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
-    <script>
+  	<script src="/socket.io/socket.io.js"></script>
+	<script>
+	  var socket = io();
 	$(document).ready(function(){
 		$('#loading').hide();
 		$('#send_torrent').click(() => {
