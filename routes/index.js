@@ -30,7 +30,7 @@ router.post('/torrent', (req, res, next) => {
 	  torrent.on('done', function () {
 		console.log('torrent download finished')
 	  })
-	})
+	});
 	/*var torrent = client.addTorrent(magnet);
 	console.log(torrent);
 	res.send(200);
@@ -46,6 +46,5 @@ router.post('/torrent', (req, res, next) => {
 
 });
 
-})
 
 module.exports = router;
