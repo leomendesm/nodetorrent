@@ -44,7 +44,7 @@ io.sockets.on('connection', function (client) {
 	console.log(getFiles(__dirname + '/public/files'));
    	client.on('toServer', function (data) {
 	let magnetURI = data.magnet;
-	client.emit(data.id, { status: 1, files: list()});
+	client.emit(data.id, { status: 1, files: getFiles(__dirname + '/public/files')});
 	torrent.add(magnetURI, { path: '/public/files' }, function (torrent) {
 	  torrent.on('done', function () {
 	 	client.emit(data.id, { status: 2, files : list()});
