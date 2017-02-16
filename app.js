@@ -1,12 +1,13 @@
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var index = require('./routes/index');
-
-var app = require('express').createServer();
-var io = require('socket.io')(app);
+let	path = require('path'),
+	favicon = require('serve-favicon'),
+	logger = require('morgan'),
+	cookieParser = require('cookie-parser'),
+	bodyParser = require('body-parser'),
+	index = require('./routes/index'),
+	app = require('express').createServer(),
+	io = require('socket.io')(app),
+	server = require('http').createServer(app),
+	io = require('socket.io').listen(server);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -44,7 +45,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.listen(80, function(){
+server.listen(80, function(){
 	console.log('chatuba');
 });
 
