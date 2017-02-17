@@ -58,7 +58,7 @@
 					separated = value.split('\/');
 					console.log(separated);
 					let count = separated.length;
-					if(separated[count-2] === "files")\{
+					if(separated[count-2] === "files"){
 						let string = "<a href='/files/"+ separated[count-1] +"' download>"+separated[count-1]+"</a><br>";
 					}else{
 						let string = "<a href='/files/"+ separated[count-2] +"\/" + separated[count-1] + "' download>"+separated[count-1]+"</a><br>";
