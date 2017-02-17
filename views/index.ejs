@@ -56,9 +56,9 @@
 				files.forEach((value)=>{
 					let separated = value.split('\\');
 					separated = value.split('\/');
-					console.log('separated');
+					console.log(separated);
 					let count = separated.length;
-					let string = "<a href='/files/"+ separated[count-1] +"' download>"+separated[count-1]+"</a>";
+					let string = "<a href='/files/"+ separated[count-1] +"' download>"+separated[count-1]+"</a><br>";
 					$('#results').append(string);
 				})
 				$('#loading').hide();
