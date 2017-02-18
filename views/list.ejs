@@ -22,9 +22,7 @@
 				separated = separated.map(function (value){
 					return value.split(',');
 				})
-				 %>
-				 <%= separated %>
-				 <%
+
 				let count = separated.length;
 				if(separated[count-2] === "files"){
 					link = separated[count-1];
