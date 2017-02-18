@@ -16,7 +16,7 @@
 			<% files.forEach((file)=>{
 				var link;
 				let separated = file.split('\\');
-				//separated = value.split('\/');
+				separated = separated.split('\/');
 				let count = separated.length;
 				if(separated[count-2] === "files"){
 					link = separated[count-1];
