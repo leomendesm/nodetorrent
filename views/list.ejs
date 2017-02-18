@@ -16,10 +16,6 @@
 			<% files.forEach((file)=>{
 				var link;
 				let separated = file.split('\/');
-				%>
-				<%=  separated %>
-				<%
-				//separated = separated.substr(27);
 				let count = separated.length;
 				if(separated[count-2] === "files"){
 					link = separated[count-1];
@@ -27,7 +23,7 @@
 					link = separated[count-2] +"\/" + separated[count-1];
 				}
 			%>
-		<a href="/files/<%= separated %>" download><%= separated %> </a><br>
+		<a href="/files/<%= link %>" download><%= separated[count-1] %> </a><br>
 			<% }) %>
 			</center>
 	</div>
