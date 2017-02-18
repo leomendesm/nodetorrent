@@ -6,13 +6,21 @@
   	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
-  <body>
+    <body class="container">
+  	<div class="row">
+   			<div class="col offset-s10 s1">
+   				<a href="/" class="black-text"> Home </a>
+
+   			</div>
+   			<div class="col s1">
+   				<a href="/list" class="black-text"> List </a>
+   			</div>
+   	</div>
 	<center>
    		<img src="images/logo.png" class="responsive-img" alt="">
    	</center>
    	<div class="row">
    	<center>
-   	<h3>List of Uploads</h3>
    	<div class="col l8 offset-l2 s12">
    	<div class="collection">
 			<% files.forEach((file)=>{
