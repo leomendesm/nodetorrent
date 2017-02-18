@@ -56,7 +56,7 @@
 		localStorage.setItem("rand", id )
 		var socket = io()
 		$('#loading').hide()
-		$('#result').hide()
+		$('#results').hide()
 		$('#send_torrent').click(() => {
 			let input = $('#torrent').val()
 			socket.emit('toServer', { magnet: input, id: localStorage.getItem('rand')})
