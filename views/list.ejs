@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Torrent Downloader</title>
+      <!-- Compiled and minified CSS -->
+  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+	<center>
+   		<img src="images/logo.png" class="responsive-img" alt="">
+   	</center>
+   	<div class="row">
+   	<h3>List of Uploads</h3>
+   	<center>
+			<% files.forEach((file)=>{
+				var link;
+				let separated = file.split('\\');
+				//separated = value.split('\/');
+				let count = separated.length;
+				if(separated[count-2] === "files"){
+					link = separated[count-1];
+				}else{
+					link = separated[count-2] +"\/" + separated[count-1];
+				}
+			%>
+		<a href="/files/<%= link %>" download><%= separated[count-1] %> </a><br>
+			<% }) %>
+			</center>
+	</div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+  	<script src="/socket.io/socket.io.js"></script>
+  </body>
+</html>

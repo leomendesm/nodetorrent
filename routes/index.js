@@ -1,6 +1,8 @@
 "use strict";
  let express = require('express'),
- router = express.Router();
+	 fs = require('fs'),
+	 domain = require('domain').create(),
+ 	router = express.Router();
 
 
 router.get('/', function(req, res, next) {

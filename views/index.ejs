@@ -42,8 +42,9 @@
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
   	<script src="/socket.io/socket.io.js"></script>
 	<script>
-	$(document).ready(function(){
-		localStorage.setItem("rand",'<%= rand %>' );
+	$(document).ready(() => {
+		var id = <%= rand %>;
+		localStorage.setItem("rand", id );
 		var socket = io();
 		$('#loading').hide();
 		$('#send_torrent').click(() => {
@@ -58,7 +59,6 @@
 				files.forEach((value)=>{
 					let separated = value.split('\\');
 					separated = value.split('\/');
-					console.log(separated);
 					let count = separated.length;
 					if(separated[count-2] === "files"){
 						let string = "<a href='/files/"+ separated[count-1] +"' download>"+separated[count-1]+"</a><br>";
@@ -68,7 +68,6 @@
 					$('#results').append(string);
 				})
 				$('#loading').hide();
-
 			}
 		})
 	})
