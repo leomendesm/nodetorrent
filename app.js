@@ -39,6 +39,7 @@ app.get('/list',(req, res, next)=>{
 			return allFiles;
 		}, files_ || []);
 	 }
+	console.log( getFiles(__dirname + '/public/files'));
 	res.render('list', { files : getFiles(__dirname + '/public/files') } )
 })
 io.sockets.on('connection', function (client) {
