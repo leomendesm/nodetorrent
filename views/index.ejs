@@ -43,7 +43,7 @@
   	<script src="/socket.io/socket.io.js"></script>
 	<script>
 	$(document).ready(() => {
-		var id = <%= rand %>;
+		var id = '<%= rand %>'
 		localStorage.setItem("rand", id );
 		var socket = io();
 		$('#loading').hide();
