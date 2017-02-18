@@ -15,10 +15,7 @@
    	<center>
 			<% files.forEach((file)=>{
 				var link;
-				let separated = file.split('\\');
-				separated = separated.map(function (value){
-					return value.split('\/');
-				})
+				let separated = file.split('\/');
 				%>
 				<%=  separated %>
 				<%
