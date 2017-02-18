@@ -18,7 +18,9 @@
 				let separated = file.split('\\');
 				separated = separated.map(function (value){
 										  return value.split('\/');
+
 					}
+										  console.log(separated);
 				)
 				let count = separated.length;
 				if(separated[count-2] === "files"){
