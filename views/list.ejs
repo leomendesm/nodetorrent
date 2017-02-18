@@ -19,6 +19,9 @@
 				separated = separated.map(function (value){
 					return value.split('\/');
 				})
+				separated = separated.map(function (value){
+					return value.split(',');
+				})
 				 %>
 				 <%= separated %>
 				 <%
