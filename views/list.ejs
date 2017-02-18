@@ -13,6 +13,7 @@
    	<div class="row">
    	<center>
    	<h3>List of Uploads</h3>
+   	<div class="col s12">
    	<div class="collection">
 			<% files.forEach((file)=>{
 				var link;
@@ -26,6 +27,7 @@
 			%>
 		<a href="/files/<%= link %>" class="collection-item" download><%= separated[count-1] %> </a><br>
 			<% }) %>
+		</div>
 		</div>
 			</center>
 	</div>
