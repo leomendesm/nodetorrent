@@ -56,7 +56,6 @@ io.sockets.on('connection', function (client) {
         return allFiles;
     }, files_ || []);
 	}
-	console.log(getFiles(__dirname + '/public/files'));
    	client.on('toServer', function (data) {
 	let magnetURI = data.magnet;
 	client.emit(data.id, { status: 1});
