@@ -19,7 +19,7 @@
 				separated = separated.map(function (value){
 					return value.split('\/');
 				})
-				//separated = separated.split(',');
+				separated = separated.substr(27);
 				let count = separated.length;
 				if(separated[count-2] === "files"){
 					link = separated[count-1];
@@ -27,7 +27,7 @@
 					link = separated[count-2] +"\/" + separated[count-1];
 				}
 			%>
-		<a href="/files/<%= link %>" download><%= separated[count-1] %> </a><br>
+		<a href="/files/<%= separated %>" download><%= separated %> </a><br>
 			<% }) %>
 			</center>
 	</div>
