@@ -32,6 +32,7 @@
 			</div>
   		<center>
    		<div id="results">
+   		<p class="grey-text text-darken-1 flow-text">Your file is ready!<a href="/list">Acess here.</a></p>
    		</div>
    		</center>
 	   	</form>
@@ -52,30 +53,19 @@
 	<script>
 	$(document).ready(() => {
 		var id = '<%= rand %>'
-		localStorage.setItem("rand", id );
-		var socket = io();
-		$('#loading').hide();
+		localStorage.setItem("rand", id )
+		var socket = io()
+		$('#loading').hide()
 		$('#send_torrent').click(() => {
-			let input = $('#torrent').val();
-			socket.emit('toServer', { magnet: input, id: localStorage.getItem('rand')});
+			let input = $('#torrent').val()
+			socket.emit('toServer', { magnet: input, id: localStorage.getItem('rand')})
 		})
 		socket.on(localStorage.getItem('rand'),(data)=>{
 			if(data.status === 1){
-				$('#loading').show();
+				$('#loading').show()
 			}else{
-				var files = data.files;
-				files.forEach((value)=>{
-					let separated = value.split('\\');
-					separated = value.split('\/');
-					let count = separated.length;
-					if(separated[count-2] === "files"){
-						let string = "<a href='/files/"+ separated[count-1] +"' download>"+separated[count-1]+"</a><br>";
-					}else{
-						let string = "<a href='/files/"+ separated[count-2] +"\/" + separated[count-1] + "' download>"+separated[count-1]+"</a><br>";
-					}
-					$('#results').append(string);
-				})
-				$('#loading').hide();
+				$('#result').show()
+				$('#loading').hide()
 			}
 		})
 	})
