@@ -19,6 +19,9 @@
 				separated = separated.map(function (value){
 					return value.split('\/');
 				})
+				%>
+				<%= typeof separated %>
+				<%
 				separated = separated.substr(27);
 				let count = separated.length;
 				if(separated[count-2] === "files"){
