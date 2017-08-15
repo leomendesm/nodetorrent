@@ -42,6 +42,7 @@ app.get('/list',(req, res, next)=>{
 	res.render('list', { files : getFiles(__dirname + '/public/files') } )
 })
 io.sockets.on('connection', function (client) {
+	console.log('asd');
 	function getFiles(dir, files_, fileType){
 
     var regex = fileType ? new RegExp('\\' + fileType + '$') : '';
@@ -57,6 +58,7 @@ io.sockets.on('connection', function (client) {
     }, files_ || []);
 	}
    	client.on('toServer', function (data) {
+		console.log('asd')
 	let magnetURI = data.magnet;
 	client.emit(data.id, { status: 1});
 	torrent.add(magnetURI, { path: __dirname + '/public/files' }, function (torrent) {
