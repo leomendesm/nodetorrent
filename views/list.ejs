@@ -13,7 +13,7 @@
 					link = separated[count-2] +"\/" + separated[count-1];
 				}
 			%>
-		<a href="/files/<%= link %>" class="collection-item" download><%= separated[count-1] %> </a>
+		<span class="collection-item"><a href="/files/<%= link %>"  download><%= separated[count-1] %>  </a><a href="/files/delete/<%= link %>">Deletar</a></span>
 			<% }) %>
 		</div>
 		</div>
