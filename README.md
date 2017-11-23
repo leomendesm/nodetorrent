@@ -4,11 +4,11 @@ Torrent client built using Node.JS and WebTorrent.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 ### Prerequisites
 
-Node - 
+Node and npm
 
 ### Installing
 clone this repo and run:
@@ -32,7 +32,7 @@ Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c6
 
 * **Leonardo Miraglia** - *Initial work* - [leomendesm](https://github.com/leomendesm)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/leomendesm/nodetorrent/graphs/contributors) who participated in this project.
 
 ## License
 
