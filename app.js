@@ -25,37 +25,22 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
-
+ function getFiles(dir, files_, fileType){
+	var regex = fileType ? new RegExp('\\' + fileType + '$') : '';
+	return fs.readdirSync(dir).reduce(function(allFiles, file){
+		var name = path.join(dir, file);
+		if (fs.statSync(name).isDirectory()){
+			getFiles(name, allFiles, fileType);
+		} else if (file.match(regex)){
+			allFiles.push(name);
+		}
+		return allFiles;
+	}, files_ || []);
+ }
 app.get('/list',(req, res, next)=>{
-	 function getFiles(dir, files_, fileType){
-		var regex = fileType ? new RegExp('\\' + fileType + '$') : '';
-		return fs.readdirSync(dir).reduce(function(allFiles, file){
-			var name = path.join(dir, file);
-			if (fs.statSync(name).isDirectory()){
-				getFiles(name, allFiles, fileType);
-			} else if (file.match(regex)){
-				allFiles.push(name);
-			}
-			return allFiles;
-		}, files_ || []);
-	 }
 	res.render('list', { files : getFiles(__dirname + '/public/files') } )
 })
 io.sockets.on('connection', function (client) {
-	function getFiles(dir, files_, fileType){
-
-    var regex = fileType ? new RegExp('\\' + fileType + '$') : '';
-
-    return fs.readdirSync(dir).reduce(function(allFiles, file){
-        var name = path.join(dir, file);
-        if (fs.statSync(name).isDirectory()){
-            getFiles(name, allFiles, fileType);
-        } else if (file.match(regex)){
-            allFiles.push(name);
-        }
-        return allFiles;
-    }, files_ || []);
-	}
    	client.on('toServer', function (data) {
 	let magnetURI = data.magnet;
 	client.emit(data.id, { status: 1});
@@ -74,7 +59,6 @@ app.use(function(req, res, next) {
   err.status = 404;
   next(err);
 });
-
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
@@ -87,7 +71,7 @@ app.use(function(err, req, res, next) {
 });
 
 server.listen(80, function(){
-	console.log('chatuba');
+	console.log('running on *:80');
 });
 
 module.exports = app;
